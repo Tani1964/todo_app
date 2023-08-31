@@ -1,0 +1,15 @@
+body{
+    background-color: darkblue;
+    display: flex;
+    justify-content: center;
+    
+}
+.container{
+    color: white;
+    width: 50%;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
