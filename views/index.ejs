@@ -13,6 +13,36 @@
             <input type="text" name="todoValue" placeholder="Add todos...">
             <button type="submit">Add</button>
         </form>
+
+        <% if(data){ %>
+            <% data.forEach(todoValue =>{%>
+                <div class="todoContainer">
+                    <div class="todoValue">
+                        <p><%= todoValue.todo %></p>
+                    </div>
+                    <div class="dd">
+                        <a class="todoDelete <%= todoValue.id %>">Delete</a>
+                    </div>
+                </div>
+            
+            <%}) %>
+        <% }%>
+
     </div>
+
+    <script>
+        const deleteButton = document.querySelectorAll('.todoDelete');
+
+        deleteButton.forEach((button, i)=>{
+            button.addEventListener('click', ()=>{
+                const endPoint = `/${button.classList[1]}`;
+                console.log(endPoint);
+                fetch(endPoint, {
+                    method: "DELETE"
+                })
+                window.location.href = "/"
+            })
+        })
+    </script>
 </body>
 </html>
