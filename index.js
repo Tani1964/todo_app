@@ -4,6 +4,7 @@ const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 const Todo = require("./models/todo")
 const { redirect } = require("statuses")
+const env = require('.env');
 
 const port = 3000;
 
@@ -12,7 +13,7 @@ app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
-const dburl = "mongodb+srv://ifegbesan6:Cvq44JyIzOLd17TM@cluster0.miqcqp0.mongodb.net/?retryWrites=true&w=majority";
+const dburl = "process.env.MONGO_URL";
 mongoose.connect(dburl, {useNewUrlParser:true, useUnifiedTopology:true})
 
 app.get("/", (req, res) => {
